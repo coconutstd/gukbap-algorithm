@@ -9,6 +9,7 @@ public class Juneui_1이될때까지 {
     public static void main(String[] args){
         assertEquals(solution(25, 5), 2);
         assertEquals(solution(17, 4 ), 3);
+        assertEquals(solution(25, 3 ), 6);
     }
 
     public static int solution(int n, int k){
