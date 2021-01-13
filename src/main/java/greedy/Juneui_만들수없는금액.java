@@ -7,8 +7,8 @@ import static org.junit.Assert.assertThat;
 
 public class Juneui_만들수없는금액 {
     public static void main(String[] args){
-        int N = 5;
-        int input[] = {3, 2, 1, 1, 9};
+        int N = 6;
+        int input[] = {3, 2, 1, 1, 8 ,9};
         assertThat(solution(N, input), equalTo(8));
         N = 3;
         input = new int[]{3, 5, 7};
