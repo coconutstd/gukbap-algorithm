@@ -12,6 +12,9 @@ public class Juneui_볼링공고르기 {
         N = 8; M = 5;
         input = new int[]{1, 5, 4, 3, 2, 4, 5, 2};
         assertThat(solution(N, M, input), equalTo(25));
+        N = 5; M = 3;
+        input = new int[]{1, 2 ,2 ,2, 3};
+        assertThat(solution(N, M, input), equalTo(7));
     }
     public static int solution(int N, int M, int[] input){
         int answer = 0;

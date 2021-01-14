@@ -24,6 +24,8 @@ public class Juneui_모험가길드 {
         assertThat(solution(5, input), equalTo(1));
         input = new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 6};
         assertThat(solution(26, input), equalTo(11));
+        input = new int[]{1, 2, 3, 3};
+        assertThat(solution(4, input), equalTo(2));
     }
 
     public static int solution(int n, int[] input){
