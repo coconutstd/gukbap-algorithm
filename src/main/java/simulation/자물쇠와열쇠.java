@@ -32,53 +32,57 @@ public class 자물쇠와열쇠 {
 
     public static boolean check(int[][] lock){
         boolean ret = true;
-        for (int checkI = 0; checkI < lock.length; ++checkI) {
-            for (int checkJ = 0; checkJ < lock.length; ++checkJ) {
-                if (copyLock[checkI][checkJ] == 0) {
-                    ret = false;
-                    break;
+        for (int i = 0; i < lock.length; ++i) {
+            for (int j = 0; j < lock.length; ++j) {
+                if (lock[i][j] == 0) {
+                    return false;
                 }
             }
-            if(!ret) break;
         }
-        return ret;
+        return true;
     }
 
 
-    public static boolean solution(int[][] key, int[][] lock){
-        boolean answer = true;
+    public boolean solution(int[][] key, int[][] lock) {
+        boolean answer = false;
         int[][] copyKey = key.clone();
         for(int rotate = 0; rotate < 4; ++rotate) {
             copyKey = rotate(copyKey);
             for (int i = 0; i < lock.length; ++i) {
                 for (int j = 0; j < lock.length; ++j) {
                     int[][] copyLock = Arrays.stream(lock).map(int[]::clone).toArray(int[][]::new);
-                    for (int startI = i, keyI = 0; startI < lock.length && keyI < copyKey.length; ++startI, ++keyI) {
-                        for (int startJ = j, keyJ = 0; startJ < lock.length && keyJ < copyKey.length; ++startJ, ++keyJ) {
-                            if (copyKey[keyI][keyJ] == 1 && copyLock[startI][startJ] == 0) {
+                    for (int startI = i, keyI = 0; startI < lock.length && keyI < key.length; ++startI, ++keyI) {
+                        for (int startJ = j, keyJ = 0; startJ < lock.length && keyJ < key.length; ++startJ, ++keyJ) {
+                            if(copyKey[keyI][keyJ] == 1 && copyLock[startI][startJ] == 1){
+                                copyLock[startI][startJ] = 0;
+                                break;
+                            }
+                            if(copyKey[keyI][keyJ] == 1 && copyLock[startI][startJ] == 0){
                                 copyLock[startI][startJ] = 1;
                             }
                         }
                     }
-
                     //check
-                    for (int checkI = 0; checkI < lock.length; ++checkI) {
-                        for (int checkJ = 0; checkJ < lock.length; ++checkJ) {
-                            if (copyLock[checkI][checkJ] == 0) {
-                                answer = false;
-                                break;
+                    if(check(copyLock)){
+                        System.out.println(i + " " + j);
+                        for(int k = 0; k < copyLock.length; ++k){
+                            for(int l = 0; l < copyLock.length; ++l){
+                                System.out.print(copyKey[k][l]);
                             }
+                            System.out.println();
                         }
-                        if (!answer) break;
+                        System.out.println("");
+                        for(int k = 0; k < copyLock.length; ++k){
+                            for(int l = 0; l < copyLock.length; ++l){
+                                System.out.print(copyLock[k][l]);
+                            }
+                            System.out.println();
+                        }
+                        return true;
                     }
-                    if (answer) {
-                        return answer;
-                    }
-                    answer = true;
                 }
             }
         }
-
-        return answer;
+        return false;
     }
 }
