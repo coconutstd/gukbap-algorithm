@@ -44,7 +44,9 @@ public class 게임개발 {
                 }
                 if(isMoved) break;
             }
-            if(!isMoved) break;
+            if(!isMoved) {
+                break;
+            }
         }
         return answer;
     }
