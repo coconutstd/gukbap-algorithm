@@ -103,6 +103,27 @@ public class 정렬된배열에서특정수의개수구하기 {
         System.out.println("걸린시간2 : " + (end - start) / 1000.0);
 
         System.out.println(rightIndex - leftIndex + 1);
+
+
+
+        start = System.currentTimeMillis();
+        left = 0;
+        right = n - 1;
+        String str = "";
+        for(int i = 0; i < n; ++i){
+            str += arr[i];
+        }
+        System.out.println(str);
+
+
+        leftIndex = str.indexOf(x);
+        rightIndex = str.lastIndexOf(x);
+
+        end = System.currentTimeMillis();
+        System.out.println("걸린시간3 : " + (end - start) / 1000.0);
+
+        System.out.println(rightIndex - leftIndex + 1);
+
     }
 }
 
