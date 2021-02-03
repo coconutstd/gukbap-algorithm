@@ -1,16 +1,8 @@
 package shortestpath;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 import java.util.Scanner;
-
-class Node {
-    int to;
-    int cost;
-    public Node(int to, int cost){
-        this.to = to;
-        this.cost = cost;
-    }
-}
 
 /*
 6 11
@@ -28,7 +20,21 @@ class Node {
 5 6 2
  */
 
-public class 간단한다익스트라 {
+class Node2 implements Comparable<Node2>{
+    int cost;
+    int from;
+    public Node2(int cost, int from){
+        this.cost = cost;
+        this.from = from;
+    }
+
+    @Override
+    public int compareTo(Node2 o) {
+        return this.cost - o.cost;
+    }
+}
+
+public class 개선된다익스트라 {
 
     static final int INF = (int) 1e9;
     static int n;
@@ -37,6 +43,7 @@ public class 간단한다익스트라 {
     static int[] distance;
     static boolean[] visited;
     static ArrayList<ArrayList<Node>> graph;
+    static PriorityQueue<Node2> q = new PriorityQueue<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -74,35 +81,19 @@ public class 간단한다익스트라 {
         }
     }
 
-    // 최단 거리가 가장 짧은 노드를 선택
-    static int getSmallestNode(){
-        int minVal = INF;
-        int index = 0;
-        for(int i = 1; i < n + 1; ++i){
-            if(distance[i] < minVal && !visited[i]){
-                minVal = distance[i];
-                index = i;
-            }
-        }
-        return index;
-    }
-
     static void dijkstra(int start){
         distance[start] = 0;
-        visited[start] = true;
-        // 처음 출발점에서 각 노드까지의 거리를 초기화 step 1
-        for(Node j :  graph.get(start)){
-            distance[j.to] = j.cost;
-        }
-
-        for(int i = 0; i < n - 1; ++i){
-            // 음의 간선이 없으므로 항상 방문한 노드는 최단거리가 보장
-            int now = getSmallestNode();
-            visited[now] = true;
-            for(Node j : graph.get(now)){
-                int cost = distance[now] + j.cost;
-                if(cost < distance[j.to]){
-                    distance[j.to] = cost;
+        q.offer(new Node2(0, start));
+        while(!q.isEmpty()){
+            Node2 cur = q.poll();
+            if(distance[cur.from] < cur.cost){
+                continue;
+            }
+            for(Node node : graph.get(cur.from)){
+                int cost = cur.cost + node.cost;
+                if(cost < distance[node.to]){
+                    distance[node.to] = cost;
+                    q.offer(new Node2(cost, node.to));
                 }
             }
         }
