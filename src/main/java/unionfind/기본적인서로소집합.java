@@ -9,8 +9,10 @@ public class 기본적인서로소집합 {
 
     static int findParent(int x){
         if(parent[x] != x){
+            // findParent(2) 는 findParent(1)의 리턴값을 받아 parent[2] = 1 로 대입(상관없지만, 중간 경로들을 항상 루트 노드로 갱신한다는 보장), parent[3] = findParent(2)의 리턴값 1을 받아 1로 갱신
             return parent[x] = findParent(parent[x]);
         }
+        // findParent(1) 호출시 리턴
         return parent[x];
     }
 
@@ -44,7 +46,7 @@ public class 기본적인서로소집합 {
 
         System.out.print("각 원소가 속한 집합: ");
         for(int i = 1; i < v + 1; ++i){
-            // 결국 마지막에 findParent 한 번씩 해줘야함
+            // 결국 마지막에 findParent 한 번씩 해줘야
             System.out.print(findParent(i) + " ");
         }
         System.out.println();
