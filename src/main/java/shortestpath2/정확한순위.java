@@ -34,6 +34,13 @@ public class 정확한순위 {
             }
         }
 
+        for(int a = 1; a < n + 1; ++a){
+            for(int b = 1; b < n + 1; ++b){
+                System.out.print(graph[a][b] + " ");
+            }
+            System.out.println();
+        }
+
         int answer = 0;
         for(int i = 1; i < n + 1; ++i){
             int count = 0;
