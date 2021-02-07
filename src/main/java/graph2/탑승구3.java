@@ -2,7 +2,7 @@ package graph2;
 
 import java.util.Scanner;
 
-public class 탑승구2 {
+public class 탑승구3 {
     static int n;
     static int m;
     static int[] p;
@@ -34,25 +34,40 @@ public class 탑승구2 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        m = sc.nextInt();
-        p = new int[n + 1];
-        for(int i = 0; i < n + 1; ++i){
+        p = new int[100001];
+        for(int i = 0; i < 100001; ++i){
             p[i] = i;
         }
         int[] data = dataGenarator(100000);
         long start = System.currentTimeMillis();
         int answer = 0;
-        for(int i = 0; i < m; ++i){
-            int plane = sc.nextInt();
-            if(find(plane) != 0){
-                union(find(plane), find(plane) - 1);
-                answer++;
-            } else {
-                break;
+//        for(int i = 0; i < data.length; ++i){
+//            if(find(data[i]) != 0){
+//                union(find(data[i]), find(data[i]) - 1);
+//                answer++;
+//            } else {
+//                break;
+//            }
+//        }
+
+
+        for(int i = 0; i < data.length; ++i){
+            int j = 0;
+            for(j = data[i]; j >= 0; --j){
+                if(j == 0) {
+                    System.out.println(answer);
+                    break;
+                }
+                if(p[j] != 0){
+                    break;
+                }
             }
+            p[j] = 0;
+            answer++;
         }
+
         long end = System.currentTimeMillis();
+        System.out.println(end - start);
         System.out.println(answer);
     }
 }
