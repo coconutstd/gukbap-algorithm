@@ -10,6 +10,7 @@ public class 크게만들기 {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int n = Integer.parseInt(st.nextToken());
@@ -25,13 +26,13 @@ public class 크게만들기 {
             }
             dq.addLast(number.charAt(i));
         }
-        String answer = "";
+        StringBuilder ans = new StringBuilder();
         while(dq.size() > k){
-            answer += dq.removeFirst();
+            ans.append(dq.removeFirst());
         }
-
-        System.out.println(answer);
-
+        bw.write(ans.toString() + "\n");
+        bw.flush();
+        bw.close();
         br.close();
     }
 }
