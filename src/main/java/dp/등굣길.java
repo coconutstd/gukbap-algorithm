@@ -29,7 +29,7 @@
 //}
 
 
-class Solution {
+class 등굣길 {
     public long solution(int m, int n, int[][] puddles) {
         long[][] root = new long[101][101];
         long[][] puddle = new long[101][101];
