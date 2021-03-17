@@ -12,7 +12,7 @@ public class 스티커 {
 
         for(int testCase = 0; testCase < t; ++testCase){
             int n = Integer.parseInt(br.readLine());
-            int[][] sticker = new int[n][n];
+            int[][] sticker = new int[2][n];
 
             for(int i = 0; i < 2; ++i){
                 st = new StringTokenizer(br.readLine());
@@ -21,7 +21,7 @@ public class 스티커 {
                 }
             }
 
-            int[][] dp = new int[n][n];
+            int[][] dp = new int[2][n];
             dp[0][0] = sticker[0][0];
             dp[1][0] = sticker[1][0];
 
@@ -35,7 +35,7 @@ public class 스티커 {
                 }
 
             }
-            bw.write(Math.max(dp[0][n - 1], dp[1][n - 1]));
+            bw.write(Math.max(dp[0][n - 1], dp[1][n - 1]) + "\n");
         }
 
         bw.flush();
