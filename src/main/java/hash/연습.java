@@ -15,7 +15,6 @@ public class 연습 {
             ArrayList<Character> list = new ArrayList<>();
             map.put(ch, list);
         }
-
         for(Map.Entry<Character, ArrayList<Character>> entry : map.entrySet()){
             bw.write(entry.getKey() + " : " + entry.getValue().size() + "\n");
         }
