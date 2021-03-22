@@ -8,7 +8,7 @@ public class 연습2 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String input = "absddddfffsfdsdd";
+        String input = "ZzZz9Z824";
 
         HashMap<Character, Integer> hashmap = new HashMap<>();
 
@@ -83,7 +83,7 @@ public class 연습2 {
                 break;
             }
         }
-
+        if(answer.size() == 0) answer.add(0);
         for(Integer a : answer){
             bw.write(a + " ");
         }
