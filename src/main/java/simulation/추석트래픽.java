@@ -82,7 +82,7 @@ public class 추석트래픽 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String[] input = new String[]{"2016-09-15 00:00:01.000 1s", "2016-09-15 00:00:02.000 1s", "2016-09-15 00:00:03.000 0.1s"};
+        String[] input = new String[]{"2016-09-15 21:00:03.000 0.0s", "2016-09-15 21:00:03.000 0.0s", "2016-09-15 21:00:2.400 0.0s"};
         bw.write(solution(input) + "\n");
         bw.flush();
         bw.close();
