@@ -1,14 +1,27 @@
 package gabia;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.PriorityQueue;
 
-class Coffee{
+class Coffee implements Comparable<Coffee>{
     int number;
     int time;
+
     public Coffee(int number, int time) {
         this.number = number;
         this.time = time;
+    }
+
+    @Override
+    public int compareTo(Coffee c){
+        if(this.time == c.time){
+            return this.number - c.number;
+        } else {
+            return this.time - c.time;
+        }
     }
 }
 
@@ -17,43 +30,23 @@ public class Three {
     public static int[] solution(int N, int[] coffee_times) {
         int[] answer = new int[coffee_times.length];
         int index = 0;
-        PriorityQueue<Coffee> heap = new PriorityQueue<>((a, b) -> {
-            if(a.time == b.time){
-                return a.number - b.number;
-            } else return a.time - b.time;
-        });
-        Queue<Coffee> queue = new LinkedList<>();
-        int curTime = Integer.MAX_VALUE;
-        for(int i = 0; i < coffee_times.length; ++i){
-            if(coffee_times[i] < curTime) curTime = coffee_times[i];
-            queue.offer(new Coffee(i + 1, coffee_times[i]));
-        }
-        boolean check = false;
+
+        PriorityQueue<Integer> coffeeMachine = new PriorityQueue<>();
+        PriorityQueue<Coffee> coffee = new PriorityQueue<>();
 
         for(int i = 0; i < N; ++i){
-            heap.offer(queue.poll());
+            coffeeMachine.offer(0);
         }
 
-        while(!queue.isEmpty() && !heap.isEmpty()){
-            Coffee coffee = heap.poll();
-            answer[index++] = coffee.number;
-            int tempTime = coffee.time;
-            while(!heap.isEmpty() && coffee.time == heap.peek().time){
-                answer[index++] = heap.poll().number;
-            }
-            if(!heap.isEmpty()){
-                int min = heap.peek().time;
-                while(!queue.isEmpty() && !heap.isEmpty() && min - tempTime > queue.peek().time){
-                    answer[index++] = queue.poll().number;
-                }
-                while(!queue.isEmpty() && heap.size() != N){
-                    heap.offer(queue.poll());
-                }
-            }
+        for(int i = 0; i < coffee_times.length; ++i){
+            int fatestEndTime = coffeeMachine.poll();
+            int completeTime = fatestEndTime + coffee_times[i];
+            coffee.offer(new Coffee(i + 1, completeTime));
+            coffeeMachine.offer(completeTime);
         }
 
-        while(!heap.isEmpty()){
-            answer[index++] = heap.poll().number;
+        for(int i = 0; i < coffee_times.length; ++i){
+            answer[i] = coffee.poll().number;
         }
 
         return answer;
@@ -70,3 +63,57 @@ public class Three {
     }
 }
 
+/*
+import java.util.*;
+
+class Solution {
+   class Coffee implements Comparable<Coffee> {
+       int number;
+       int time;
+       public Coffee(int number, int time) {
+           this.number = number;
+           this.time = time;
+       }
+
+      public int compareTo(Coffee c) {
+         int comp = this.time - c.time;
+         if (comp == 0) {
+            comp = this.number - c.number;
+         }
+         return comp;
+      }
+   }
+
+    public int[] solution(int N, int[] coffee_times) {
+       int M = coffee_times.length;
+       int[] answer = new int[M];
+       PriorityQueue<Coffee> coffee_made_time = new PriorityQueue<>();
+       PriorityQueue<Integer> coffee_machine = new PriorityQueue<>();
+
+       for (int i = 0; i < N; i++) {
+         coffee_machine.add(0);
+      }
+
+       for (int i = 0; i < M; i++) {
+         int fastest_end_time = coffee_machine.poll();
+         int end_time = fastest_end_time + coffee_times[i];
+         coffee_made_time.add(new Coffee(i+1, end_time));
+         coffee_machine.add(end_time);
+      }
+
+       for (int i = 0; i < M; i++) {
+         answer[i] = coffee_made_time.poll().number;
+      }
+
+        return answer;
+    }
+
+
+    public static void main(String[] args) {
+       int N = 3;
+       int[] coffee_times = {4,2,2,5,3};
+       Solution sol = new Solution();
+      System.out.println(Arrays.toString(sol.solution(N, coffee_times)));
+   }
+}
+ */
