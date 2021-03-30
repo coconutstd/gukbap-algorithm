@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class 그래프연습 {
 
     static int[] p;
     static int[] indegree;
@@ -16,12 +16,7 @@ public class Main {
     }
 
     static void union(int a, int b){
-
-        if(a < b){
-            p[b] = a;
-        } else {
-            p[a] = b;
-        }
+        p[b] = a;
     }
 
     public static int[] solution(int total_sp, int[][] skills){
@@ -59,8 +54,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int[][] skills = new int[][]{
-                {1, 2},
-                {1, 3},
+                {2, 1},
+                {2, 3},
                 {3, 6},
                 {3, 4},
                 {3, 5}
