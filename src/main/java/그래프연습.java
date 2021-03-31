@@ -15,10 +15,6 @@ public class 그래프연습 {
         }else return x;
     }
 
-    static void union(int a, int b){
-        p[b] = a;
-    }
-
     public static int[] solution(int total_sp, int[][] skills){
         int N = skills.length + 1;
         int[] answer = new int[N];
@@ -30,7 +26,7 @@ public class 그래프연습 {
             int parent = skills[i][0];
             int child = skills[i][1];
             indegree[parent]++;
-            union(parent, child);
+            p[child] = parent;
         }
         for(int i = 1; i < N + 1; ++i){
             if(indegree[i] == 0){
