@@ -14,7 +14,7 @@ class Job implements Comparable<Job>{
     }
 }
 
-class Solution {
+class 디스크컨트롤러 {
     public int solution(int[][] jobs) {
         int length = jobs.length;
         int answer = 0;
