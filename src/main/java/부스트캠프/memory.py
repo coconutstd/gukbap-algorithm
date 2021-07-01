@@ -5,18 +5,14 @@ input4 = ["BOOL", "LONG", "SHORT", "LONG", "BOOL", "LONG", "BOOL", "LONG", "SHOR
 
 def solution(input):
     ret = []
+    memory_type = {"BOOL": 1, "SHORT": 2, "FLOAT": 4, "INT": 8, "LONG": 16}
+
     prev = ""
+    temp_memory = "........"
+    start_index = 0
     for data in input:
-        mem = []
-        if data == "FLOAT":
-            for i in range(4):
-                mem.append("#")
-            ret.append(''.join(mem))
-        elif data == "INT":
-            ret.append("########")
-        elif data == "LONG":
-            ret.append("########")
-            ret.append("########")
+        if memory_type[data] < memory_type[prev]:
+            pass
         prev = data
     print(ret)
 
