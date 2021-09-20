@@ -9,13 +9,16 @@ speeds = [1, 30, 5]
 q = progresses.copy()
 answer = []
 while q:
+    # 작업이 남아있으면, 남은 작업들을 진행시킨다
     for i in range(0, len(q)):
         q[i] = q[i] + speeds[i]
-    for ele in q:
-        if ele >= 100:
+    # 완료된 작업들을 확인한다
+    while q and q[0] >= 100:
+            # 100이 넘은 작업이 있으면 배포한다
             pop_cnt = 1
             q.pop(0)
             speeds.pop(0)
+            # 바로 다음 작업도 100이 넘으면 배포한다, 있다면 완료된 작업이 나오지 않을 때 까지 배포한다
             while q and q[0] >= 100:
                 q.pop(0)
                 speeds.pop(0)
