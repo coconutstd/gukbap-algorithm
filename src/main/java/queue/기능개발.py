@@ -4,17 +4,26 @@
 # 1. 큐를 순회하며 작업을 진행시킨다
 # 2. 큐의 가장 앞에 있는 작업이 100이 넘어가면 뺀다. 이후의 작업도 빠질 수 있는지 확인한다.
 # 3. 뺀 만큼 카운트 한 다음에 정답 배열에 추가한다.
-q = [1, 2, 3]
-cnt = 0
+progresses = [93, 30, 55]
+speeds = [1, 30, 5]
+q = progresses.copy()
+answer = []
 while q:
     for i in range(0, len(q)):
-        q[i] = q[i] + 1
+        q[i] = q[i] + speeds[i]
     for ele in q:
         if ele >= 100:
-            print(cnt)
+            pop_cnt = 1
             q.pop(0)
-    cnt += 1
-    print(q)
+            speeds.pop(0)
+            while q and q[0] >= 100:
+                q.pop(0)
+                speeds.pop(0)
+                pop_cnt += 1
+            if pop_cnt > 0:
+                answer.append(pop_cnt)
+
+print(answer)
 
 
 
