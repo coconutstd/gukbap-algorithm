@@ -1,9 +1,27 @@
 import re
 
-example = "The URL is http://www.forta.com/, to connect" \
-          "securely use https://www.forta.com/ instead."
+# example = "The URL is http://www.forta.com/, to connect" \
+#           "securely use https://www.forta.com/ instead."
+#
+# regex = "https?:\/\/[\w\/]+"
+#
+# obj = re.compile(regex)
+# print(obj.findall(example))
 
-regex = "https?:\/\/[\w\/]+"
-
-obj = re.compile(regex)
-print(obj.findall(example))
+example2 = """
+            body {
+                background-color: #fefbd8;
+            }
+            h1 {
+                background-color: #0000ff;
+            }
+            div {
+                background-color: #d0f4e6;
+            }
+            span {
+                background-color: #f08970;
+            }
+           """
+regex2 = "#[a-z0-9A-Z]{6}"
+obj = re.compile(regex2)
+print(obj.findall(example2))
