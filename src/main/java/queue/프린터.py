@@ -17,3 +17,30 @@ def solution(priorities, location):
             temp = priorities_location.pop(0)
             priorities_location.append(temp)
     return answer
+
+
+def solution(priorities, location):
+    answer = 0
+    queue = []
+    for p in enumerate(priorities):
+        queue.append(p)
+
+    cnt = 0
+
+    while queue:
+        cur = queue[0]
+        isOk = True
+        for i in range(1, len(queue)):
+            if cur[1] < queue[i][1]:
+                queue.pop(0)
+                queue.append(cur)
+                isOk = False
+                break
+        if isOk:
+            document = queue.pop(0)
+            cnt += 1
+            if document[0] == location:
+                answer = cnt
+                break
+
+    return answer
