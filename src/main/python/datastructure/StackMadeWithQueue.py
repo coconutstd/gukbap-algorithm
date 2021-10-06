@@ -19,6 +19,7 @@ class Stack:
     def empty(self):
         return 0 == len(self.q)
 
+
 st = Stack()
 st.push(1)
 st.push(2)
