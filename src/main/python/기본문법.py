@@ -124,3 +124,56 @@ print(a * 3)
 a = "ABCDEF"
 print(a[2:4])
 
+a = (1, 2, 3, 4)
+print(a)
+
+# a[2] = 7
+
+data = dict()
+data['사과'] = 'Apple'
+data['바나나'] = 'Banana'
+data['코코넛'] = 'Coconut'
+
+print(data)
+
+key_list = data.keys()
+value_list = data.values()
+print(key_list)
+print(value_list)
+
+for key in key_list:
+    print(data[key])
+
+data = set([1, 1, 2, 3, 4, 4, 5])
+print(data)
+data = {1, 1, 2, 3, 4, 4, 5}
+print(data)
+
+a = set([1, 2, 3, 4, 5])
+b = set([3, 4, 5, 6, 7])
+print(a | b)
+print(a & b)
+print(a - b)
+
+data = set([1, 2, 3])
+print(data)
+
+data.add(4)
+print(data)
+
+data.update([5, 6])
+print(data)
+
+data.remove(3)
+print(data)
+
+def add(a, b):
+    return a + b
+
+print(add(3, 7))
+
+print((lambda a, b: a + b(3, 7)))
+
+n = int(input())
+data = map(int, input().split())
+print(data)
