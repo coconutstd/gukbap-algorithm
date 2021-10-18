@@ -15,9 +15,9 @@ public class 신규아이디추천 {
         String temp_id = "";
         for(int i = 0; i < processing_id.length(); ++i){
             Character ch = processing_id.charAt(i);
-            if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' || ch == '-' || ch == '_' || ch == '.') {
-                temp_id += ch;
-            }
+//            if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' || ch == '-' || ch == '_' || ch == '.') {
+//                temp_id += ch;
+//            }
         }
         System.out.println(temp_id);
         return answer;
