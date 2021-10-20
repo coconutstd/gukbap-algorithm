@@ -1,5 +1,7 @@
 package tree;
 
+import java.util.Stack;
+
 class Node {
     int value;
     Node left, right;
@@ -28,6 +30,14 @@ public class Tree {
             ldr1(root.left);
             ldr1(root.right);
             System.out.println(root.value);
+        }
+    }
+
+    private void ldr2(Node root) {
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (true) {
+
         }
     }
 }
