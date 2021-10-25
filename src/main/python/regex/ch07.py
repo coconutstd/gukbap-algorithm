@@ -11,3 +11,11 @@ print(obj.findall(example))
 regex2 = "(&nbsp;){2,}"
 obj2 = re.compile(regex2)
 print(obj2.findall(example))
+
+example2 = "ID: 042" \
+           "SEX: M" \
+           "DOB: 1967-08-17" \
+           "Status: Active"
+
+regex3 = r"(19|20)\d{2}"
+print(re.search(regex3, example2))
