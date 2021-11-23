@@ -5,5 +5,13 @@ def reverse(message):
 
     print(reversedMessage)
 
+def reverse2(message):
+    arr = list(message)
+    for i in range(int(len(message) / 2)):
+        temp = arr[i]
+        arr[i] = arr[len(message) - 1 - i]
+        arr[len(arr) - 1 - i] = temp
+    print(arr)
+
 msg = "Hello"
-reverse(msg)
+reverse2(msg)
